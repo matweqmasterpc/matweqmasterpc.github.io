@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b10">
+  <meta name="description" content="Матвей — частный мастер. Ремонт и настройка компьютеров, ноутбуков, принтеров, телевизоров и сетевого оборудования. Сборка и апгрейд ПК.">
+  <title>Матвей — частный мастер | Ремонт и настройка техники</title>
+  <style>
+    :root{
+      --bg:#090b10;--panel:#11151e;--panel2:#171d29;--text:#f4f6fb;
+      --muted:#9ca6b8;--line:rgba(255,255,255,.1);--accent:#e84b36;
+      --accent2:#ff765c;--max:1160px;--radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:86px}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .topline{height:4px;background:linear-gradient(90deg,#e84b36,#ff9a69,#e84b36)}
+    header{position:sticky;top:0;z-index:20;background:rgba(9,11,16,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.4px}
+    .brand-mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#9f261d);display:grid;place-items:center;font-weight:900;font-size:19px;box-shadow:0 8px 28px #e84b3633}
+    .brand small{display:block;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase}
+    .navlinks{display:flex;align-items:center;gap:27px;color:#c4cad5;font-size:13px}
+    .navlinks a:hover{color:#fff}
+    .nav-phone{font-weight:800;white-space:nowrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 21px;border-radius:12px;background:var(--accent);color:#fff;font-weight:800;border:1px solid var(--accent);transition:.2s;cursor:pointer}
+    .btn:hover{background:#ff6048;transform:translateY(-2px);box-shadow:0 10px 30px #e84b3633}
+    .btn.ghost{background:transparent;border-color:#ffffff38}
+    .btn.ghost:hover{background:#ffffff12;border-color:#ffffff70}
+    .hero{position:relative;overflow:hidden;padding:88px 0 76px;background:radial-gradient(ellipse at 78% 30%,#67271f55,transparent 42%),radial-gradient(ellipse at 10% 100%,#1e385044,transparent 40%)}
+    .hero:after{content:"";position:absolute;right:-120px;top:15px;width:560px;height:560px;border:1px solid #ffffff0c;border-radius:50%;box-shadow:0 0 0 55px #ffffff06,0 0 0 110px #ffffff04;pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:55px;align-items:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:#ff9b85;font-size:12px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}
+    .dot{width:7px;height:7px;border-radius:50%;background:#ff765c;box-shadow:0 0 14px #ff765c}
+    h1{font-size:clamp(42px,6vw,70px);line-height:1.02;letter-spacing:-2.8px;margin:20px 0}
+    h1 span{color:var(--accent2)}
+    .lead{max-width:590px;color:#b4bdcb;font-size:17px;margin:0 0 30px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-note{display:flex;gap:22px;flex-wrap:wrap;margin-top:36px;color:#aab3c2;font-size:12px}
+    .hero-note b{color:#fff;font-size:14px;display:block}
+    .visual{min-height:420px;position:relative;display:grid;place-items:center}
+    .orb{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff9077,#a52f27 38%,#28151b 72%);filter:blur(.2px);opacity:.82;box-shadow:0 0 90px #d6423244}
+    .pc-card{position:relative;width:min(100%,430px);padding:25px;border:1px solid #ffffff25;border-radius:26px;background:linear-gradient(145deg,#222a37dd,#0c1019ee);box-shadow:0 30px 80px #0009;transform:rotate(-3deg)}
+    .pc-top{display:flex;justify-content:space-between;align-items:center;color:#b7c1d0;font-size:11px;letter-spacing:1.2px;text-transform:uppercase}
+    .pc-illustration{height:230px;margin:22px 0 18px;border-radius:17px;background:linear-gradient(135deg,#111722,#202b3b);display:grid;place-items:center;position:relative;overflow:hidden}
+    .case{width:145px;height:190px;border:2px solid #687386;border-radius:13px;background:linear-gradient(135deg,#283346,#101620);position:relative;box-shadow:0 15px 40px #0008}
+    .case:before{content:"";position:absolute;inset:13px;border:1px solid #ffffff24;border-radius:8px}
+    .fan{position:absolute;width:74px;height:74px;border:5px solid #f16a55;border-radius:50%;top:43px;left:34px;box-shadow:0 0 25px #e84b3677,inset 0 0 18px #e84b3655}
+    .fan:after{content:"";position:absolute;inset:12px;border:2px dashed #ffb09c;border-radius:50%}
+    .case:after{content:"";position:absolute;bottom:17px;left:25px;width:92px;height:3px;background:#ff765c;box-shadow:0 0 12px #ff765c}
+    .pc-caption{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .pc-caption strong{font-size:18px}
+    .pc-caption span{font-size:11px;color:#9ba7b8}
+    section{padding:82px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}
+    .kicker{color:var(--accent2);font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}
+    h2{font-size:clamp(30px,4vw,45px);letter-spacing:-1.5px;line-height:1.1;margin:10px 0 0}
+    .section-desc{max-width:440px;color:var(--muted);font-size:14px}
+    .services{background:#0d1119}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .service{background:linear-gradient(145deg,#171d28,#10141d);border:1px solid var(--line);border-radius:18px;padding:25px;min-height:215px;transition:.22s}
+    .service:hover{transform:translateY(-4px);border-color:#e84b3677;background:linear-gradient(145deg,#202633,#121721)}
+    .icon{width:45px;height:45px;border-radius:13px;background:#e84b361c;border:1px solid #e84b3640;display:grid;place-items:center;font-size:22px;margin-bottom:20px}
+    .service h3{font-size:18px;margin:0 0 9px}
+    .service p{color:var(--muted);font-size:13px;margin:0}
+    .service .tags{margin-top:15px;color:#ff9a85;font-size:11px;font-weight:700}
+    .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:65px;align-items:center}
+    .about-visual{min-height:390px;border-radius:25px;background:linear-gradient(145deg,#1d2838,#10151f);border:1px solid var(--line);position:relative;overflow:hidden;padding:30px;display:flex;flex-direction:column;justify-content:end}
+    .about-visual:before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:#e84b362c;filter:blur(5px);top:-90px;right:-80px}
+    .big-m{font-size:180px;line-height:.8;font-weight:900;letter-spacing:-15px;color:#ffffff12;position:absolute;top:35px;left:28px}
+    .about-visual strong{font-size:25px;position:relative}
+    .about-visual span{color:#aab5c5;font-size:13px;position:relative}
+    .about-copy p{color:#aeb8c7;font-size:15px}
+    .checks{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:25px}
+    .check{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#dce2eb}
+    .check i{font-style:normal;color:#ff876f;font-weight:900}
+    .process{background:#0d1119}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{padding:23px;border:1px solid var(--line);border-radius:17px;background:#121823}
+    .step-num{color:#ff8069;font-size:12px;font-weight:900;letter-spacing:1px}
+    .step h3{font-size:17px;margin:13px 0 8px}
+    .step p{color:var(--muted);font-size:13px;margin:0}
+    .price-panel{border:1px solid var(--line);border-radius:22px;background:linear-gradient(120deg,#191f2b,#11151e);padding:35px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}
+    .price-panel p{color:var(--muted);max-width:680px;margin:10px 0 0;font-size:14px}
+    .price-mark{font-size:34px;font-weight:900;color:#ff927b;white-space:nowrap}
+    .contact{background:radial-gradient(ellipse at 80% 50%,#67271f33,transparent 45%),#0d1119}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+    .contact-copy p{color:var(--muted);max-width:450px}
+    .contact-list{display:grid;gap:12px;margin-top:27px}
+    .contact-item{display:flex;align-items:center;gap:14px;padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:#ffffff05}
+    .contact-item .icon{margin:0;width:39px;height:39px;flex:none;font-size:17px}
+    .contact-item small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px}
+    .contact-item strong{font-size:14px;overflow-wrap:anywhere}
+    .contact-box{background:linear-gradient(145deg,#1b222f,#111620);border:1px solid var(--line);border-radius:22px;padding:30px}
+    .contact-box h3{font-size:23px;margin:0 0 10px}
+    .contact-box p{color:var(--muted);font-size:13px;margin:0 0 23px}
+    .contact-buttons{display:grid;gap:10px}
+    footer{border-top:1px solid var(--line);padding:24px 0;color:#7f8999;font-size:12px}
+    .footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .mobile-bar{display:none}
+    @media(max-width:900px){
+      .navlinks{display:none}.hero-grid{grid-template-columns:1fr;gap:20px}.visual{min-height:350px}.orb{width:280px;height:280px}
+      .about-grid{grid-template-columns:1fr;gap:30px}.about-visual{min-height:280px}.big-m{font-size:140px}
+      .service-grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .wrap{width:min(100% - 30px,var(--max))}.nav{height:66px}.brand-mark{width:36px;height:36px}.nav-phone{font-size:13px}
+      .hero{padding:58px 0 42px}h1{font-size:43px;letter-spacing:-1.9px}.lead{font-size:15px}.hero-note{gap:15px;margin-top:27px}
+      .visual{min-height:300px}.pc-card{padding:17px;transform:none}.pc-illustration{height:185px}.case{transform:scale(.85)}
+      section{padding:60px 0}.section-head{display:block}.section-desc{margin-top:14px}
+      .service-grid{grid-template-columns:1fr;gap:11px}.service{min-height:0;padding:21px}.icon{margin-bottom:14px}
+      .checks{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr;gap:10px}.step{padding:17px}.step h3{font-size:15px}
+      .price-panel{grid-template-columns:1fr;padding:24px}.price-mark{font-size:28px}
+      .contact-grid{grid-template-columns:1fr;gap:25px}.contact-box{padding:23px}
+      .mobile-bar{display:flex;position:fixed;z-index:30;bottom:12px;left:12px;right:12px;gap:9px;padding:8px;background:#151b26ed;border:1px solid #ffffff20;border-radius:16px;backdrop-filter:blur(14px);box-shadow:0 10px 40px #0009}
+      .mobile-bar .btn{flex:1;padding:12px 10px;font-size:13px}
+      footer{padding-bottom:95px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Матвей — частный мастер">
+        <span class="brand-mark">М</span>
+        <span>МАТВЕЙ<small>частный мастер</small></span>
+      </a>
+      <nav class="navlinks">
+        <a href="#services">Услуги</a><a href="#about">О мастере</a><a href="#process">Как работаю</a><a href="#contacts">Контакты</a>
+      </nav>
+      <a class="nav-phone" href="tel:+79991384071">8 999 138-40-71</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Ремонт · настройка · апгрейд</div>
+          <h1>Техника должна<br>работать. <span>Я помогу.</span></h1>
+          <p class="lead">Компьютеры, ноутбуки, принтеры, телевизоры и домашняя сеть. Диагностика, ремонт, обслуживание и настройка — без лишней сложности и непонятных объяснений.</p>
+          <div class="hero-actions">
+            <a class="btn" href="tel:+79991384071">Позвонить мастеру ↗</a>
+            <a class="btn ghost" href="#services">Посмотреть услуги</a>
+          </div>
+          <div class="hero-note">
+            <div><b>ПК и ноутбуки</b>Ремонт и модернизация</div>
+            <div><b>Бытовая техника</b>Принтеры, ТВ, сеть</div>
+            <div><b>Понятный подход</b>Сначала разберёмся в проблеме</div>
+          </div>
+        </div>
+        <div class="visual" aria-label="Иллюстрация игрового компьютера">
+          <div class="orb"></div>
+          <div class="pc-card">
+            <div class="pc-top"><span>Personal service</span><span>01 / 04</span></div>
+            <div class="pc-illustration"><div class="case"><div class="fan"></div></div></div>
+            <div class="pc-caption"><strong>Техника под контролем</strong><span>MATVEY / SERVICE</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">Чем могу помочь</div><h2>Услуги и направления</h2></div>
+          <p class="section-desc">Работаю с разными устройствами: от настольного компьютера до домашнего Wi-Fi и печатающей техники.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service"><div class="icon">▣</div><h3>Ремонт компьютеров</h3><p>Поиск неисправностей, диагностика комплектующих, устранение проблем с запуском, перегревом, питанием и производительностью.</p><div class="tags">ДИАГНОСТИКА · РЕМОНТ · ОБСЛУЖИВАНИЕ</div></article>
+          <article class="service"><div class="icon">▱</div><h3>Ноутбуки</h3><p>Диагностика сбоев, настройка Windows и драйверов, обслуживание системы охлаждения, помощь с медленной работой и запуском.</p><div class="tags">НАСТРОЙКА · ОБСЛУЖИВАНИЕ</div></article>
+          <article class="service"><div class="icon">⚙</div><h3>Сборка и апгрейд ПК</h3><p>Подбор совместимых комплектующих, сборка компьютера под задачи и бюджет, замена процессора, видеокарты, накопителей и памяти.</p><div class="tags">СБОРКА · МОДЕРНИЗАЦИЯ · ПОДБОР</div></article>
+          <article class="service"><div class="icon">▤</div><h3>Принтеры и МФУ</h3><p>Подключение и настройка печати, установка драйверов, решение проблем с обнаружением устройства и печатью.</p><div class="tags">CANON · EPSON И ДРУГИЕ</div></article>
+          <article class="service"><div class="icon">▣</div><h3>Телевизоры и ТВ</h3><p>Первичная диагностика неисправностей, настройка Smart TV, подключение устройств и помощь с цифровым телевидением.</p><div class="tags">ТВ · SMART TV · АНТЕННЫ</div></article>
+          <article class="service"><div class="icon">⌁</div><h3>Роутеры и Wi-Fi</h3><p>Настройка роутеров и Mesh-систем, подключение к провайдеру, решение проблем с интернетом и покрытием Wi-Fi.</p><div class="tags">WI-FI · РОУТЕРЫ · СЕТЬ</div></article>
+          <article class="service"><div class="icon">⌘</div><h3>Windows и программы</h3><p>Установка и настройка Windows, драйверов и программ, устранение системных ошибок, базовая оптимизация и перенос данных.</p><div class="tags">WINDOWS · ДРАЙВЕРЫ · ПО</div></article>
+          <article class="service"><div class="icon">◉</div><h3>Чистка и обслуживание</h3><p>Очистка компьютера от пыли, обслуживание системы охлаждения, проверка температур и состояния основных компонентов.</p><div class="tags">ПРОФИЛАКТИКА · ТЕМПЕРАТУРЫ</div></article>
+          <article class="service"><div class="icon">＋</div><h3>Помощь с техникой</h3><p>Подключение периферии, настройка устройств, консультация по выбору комплектующих и помощь с домашней техникой.</p><div class="tags">ПОДКЛЮЧЕНИЕ · КОНСУЛЬТАЦИЯ</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-visual"><div class="big-m">М</div><strong>Матвей</strong><span>Частный мастер по ремонту и настройке техники</span></div>
+        <div class="about-copy">
+          <div class="kicker">О мастере</div><h2>Разбираюсь в технике<br>и объясняю по делу</h2>
+          <p>Я Матвей — частный мастер. Занимаюсь ремонтом, настройкой и обслуживанием компьютерной и цифровой техники. Работаю с настольными ПК и ноутбуками, собираю компьютеры, помогаю подобрать комплектующие и обновить существующую систему.</p>
+          <p>Также помогаю с принтерами и МФУ, телевизорами, роутерами, Wi-Fi и подключением устройств. В работе для меня важно сначала понять причину неисправности, а затем предложить понятный вариант решения.</p>
+          <div class="checks">
+            <div class="check"><i>✓</i><span>Объясняю, что именно неисправно</span></div>
+            <div class="check"><i>✓</i><span>Подбираю решение под задачу и бюджет</span></div>
+            <div class="check"><i>✓</i><span>Проверяю совместимость комплектующих</span></div>
+            <div class="check"><i>✓</i><span>Не обещаю ремонт до диагностики</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="wrap">
+        <div class="section-head"><div><div class="kicker">Просто и прозрачно</div><h2>Как проходит работа</h2></div><p class="section-desc">Без догадок и ненужных замен: сначала выясняем, что произошло, и только потом выбираем решение.</p></div>
+        <div class="steps">
+          <article class="step"><div class="step-num">ШАГ 01</div><h3>Обращение</h3><p>Вы описываете проблему по телефону или в сообщении. При необходимости уточняю модель устройства и симптомы.</p></article>
+          <article class="step"><div class="step-num">ШАГ 02</div><h3>Диагностика</h3><p>Проверяю устройство и определяю возможную причину неисправности. Сложность и стоимость согласуем заранее.</p></article>
+          <article class="step"><div class="step-num">ШАГ 03</div><h3>Решение</h3><p>Обсуждаем варианты ремонта, настройки или модернизации. Работы выполняются после согласования.</p></article>
+          <article class="step"><div class="step-num">ШАГ 04</div><h3>Проверка</h3><p>Проверяю результат и работоспособность устройства после выполненных работ.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="prices">
+      <div class="wrap">
+        <div class="price-panel">
+          <div><div class="kicker">Стоимость услуг</div><h2>Цена зависит от задачи</h2><p>Стоимость ремонта зависит от модели устройства, характера неисправности и необходимых комплектующих. Напишите или позвоните — уточню задачу и сориентирую по цене до начала работ.</p></div>
+          <div class="price-mark">Без скрытых работ</div>
+        </div>
+        <p style="color:#778294;font-size:11px;margin:13px 3px 0">Точный прайс-лист Avito в доступной истории не сохранился, поэтому здесь не указаны неподтверждённые цены.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contacts">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <div class="kicker">Связаться со мной</div><h2>Опишите проблему —<br>найдём решение</h2>
+          <p>Позвоните или напишите удобным способом. Расскажите, что за устройство и что с ним происходит — помогу сориентироваться по дальнейшим действиям.</p>
+          <div class="contact-list">
+            <a class="contact-item" href="tel:+79991384071"><span class="icon">☎</span><span><small>Телефон</small><strong>8 999 138-40-71</strong></span></a>
+            <a class="contact-item" href="mailto:sta.fly.sta.fly.94@gmail.com"><span class="icon">✉</span><span><small>Электронная почта</small><strong>sta.fly.sta.fly.94@gmail.com</strong></span></a>
+            <a class="contact-item" href="https://vk.ru/club243324886" target="_blank" rel="noopener"><span class="icon">ВК</span><span><small>Сообщество ВКонтакте</small><strong>vk.ru/club243324886</strong></span></a>
+            <a class="contact-item" href="https://www.avito.ru/user/d971e12712cbcb5b68ad5ba37620d416/profile?src=sharing" target="_blank" rel="noopener"><span class="icon">А</span><span><small>Профиль и отзывы на Avito</small><strong>Открыть профиль</strong></span></a>
+          </div>
+        </div>
+        <div class="contact-box">
+          <h3>Нужна помощь с техникой?</h3>
+          <p>Свяжитесь со мной напрямую. Если удобно, сразу отправьте фото устройства или сообщение об ошибке.</p>
+          <div class="contact-buttons">
+            <a class="btn" href="tel:+79991384071">Позвонить: 8 999 138-40-71</a>
+            <a class="btn ghost" href="https://vk.ru/club243324886" target="_blank" rel="noopener">Написать ВКонтакте ↗</a>
+            <a class="btn ghost" href="https://www.avito.ru/user/d971e12712cbcb5b68ad5ba37620d416/profile?src=sharing" target="_blank" rel="noopener">Профиль на Avito ↗</a>
+            <a class="btn ghost" href="mailto:sta.fly.sta.fly.94@gmail.com">Написать на почту ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row"><span>© <span id="year">2026</span> Матвей — частный мастер</span><span>Ремонт · настройка · сборка · апгрейд</span></div>
+  </footer>
+  <div class="mobile-bar"><a class="btn" href="tel:+79991384071">☎ Позвонить</a><a class="btn ghost" href="https://vk.ru/club243324886" target="_blank" rel="noopener">Написать</a></div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
